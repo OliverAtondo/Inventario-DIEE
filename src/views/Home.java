@@ -3,12 +3,19 @@ package views;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import classes.*;
 
 public class Home extends JFrame implements ActionListener{
 
     public JMenuBar barraMenu = new JMenuBar();
 
+    //BARRA DE TAREAS//////////////////////////////////////////////////////////////
     public JToolBar barraHerramientas = new JToolBar(null, JToolBar.VERTICAL);
+    public JButton agregarObjeto = new JButton("agregar");
+    public JButton elegirObjeto = new JButton("elegir");
+    public JButton eliminarObjeto = new JButton("eliminar");
+    public JButton modificarObjeto = new JButton("modificar");
+    public JButton seleccionMultiple = new JButton("seleccion");
 
     //MENU EN BARRA/////////////////////////////////////////////////////////////////////
     //ELECTRONICA
@@ -36,8 +43,11 @@ public class Home extends JFrame implements ActionListener{
     JPanel panel1=new JPanel();
     JLabel et_p1=new JLabel("Estas en el panel 1");
 
+    Database con = new Database();
+
     public Home(){
 
+        con.createNewDatabase("prueba.db");
         //BARRA DE MENU/////////////////////////////////////////////
         barraMenu.add(electronica_menu);
         barraMenu.add(archivo_menu);
@@ -62,8 +72,21 @@ public class Home extends JFrame implements ActionListener{
 
         //BARRA DE HERRAMIENTAS
         barraHerramientas.setBounds(0,0,100,1080);
-        barraHerramientas.add(new JTextArea());
-        barraHerramientas.add(new JButton("Submit"));
+        barraHerramientas.add(agregarObjeto);
+        agregarObjeto.setFocusPainted(false);
+        barraHerramientas.add(new JSeparator(SwingConstants.HORIZONTAL));
+        barraHerramientas.add(elegirObjeto);
+        elegirObjeto.setFocusPainted(false);
+        barraHerramientas.add(new JSeparator(SwingConstants.HORIZONTAL));
+        barraHerramientas.add(eliminarObjeto);
+        eliminarObjeto.setFocusPainted(false);
+        barraHerramientas.add(new JSeparator(SwingConstants.HORIZONTAL));
+        barraHerramientas.add(modificarObjeto);
+        modificarObjeto.setFocusPainted(false);
+        barraHerramientas.add(new JSeparator(SwingConstants.HORIZONTAL));
+        barraHerramientas.add(seleccionMultiple);
+        seleccionMultiple.setFocusPainted(false);
+        barraHerramientas.add(new JSeparator(SwingConstants.HORIZONTAL));
 
         //LOS COMPONENTES SE AGREGAN
         add(barraMenu, BorderLayout.PAGE_START);

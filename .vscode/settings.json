@@ -1,8 +1,16 @@
 {
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\atond\\OneDrive\\Escritorio\\Inventario CLAMPS\\conector.jar"
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar"
+        ],
+        "exclude": [
+            "lib/sqlite-jdbc-3.7.2.jar",
+            "lib/sqlite-jdbc-3.40.1.0.jar"
+        ]
+    },
+    "cSpell.words": [
+        "JDBC"
     ]
 }

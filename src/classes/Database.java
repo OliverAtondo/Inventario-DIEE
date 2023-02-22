@@ -1,23 +1,26 @@
 package classes;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Database {
-    public String getQuery(String query, String dato)
-    {
-    try{
-    Class.forName("com.mysql.cj.jdbc.Driver");
-    Connection con=DriverManager.getConnection(
-    "jdbc:mysql://localhost:3306/mydb","root","66xkzHUb3.");
-    Statement stmt=con.createStatement();
-    ResultSet rs=stmt.executeQuery(query);
-    String result =  rs.getString(dato);
-    con.close();
-    System.out.println(result);
-    return result;
-    }catch(Exception e){
-        System.out.println(e);
-        return "Error";
+
+    public void createNewDatabase(String fileName) {
+
+        String url = "jdbc:sqlite:./data/" + fileName;
+
+        try {
+            Connection conn = DriverManager.getConnection(url);
+            if (conn != null) {
+                DatabaseMetaData meta = conn.getMetaData();
+                System.out.println("The driver name is " + meta.getDriverName());
+                System.out.println("A new database has been created.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
-    };
 }
