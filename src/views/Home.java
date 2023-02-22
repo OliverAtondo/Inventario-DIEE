@@ -8,6 +8,8 @@ public class Home extends JFrame implements ActionListener{
 
     public JMenuBar barraMenu = new JMenuBar();
 
+    public JToolBar barraHerramientas = new JToolBar(null, JToolBar.VERTICAL);
+
     //MENU EN BARRA/////////////////////////////////////////////////////////////////////
     //ELECTRONICA
     public JMenu electronica_menu = new JMenu("Electronica");
@@ -31,11 +33,12 @@ public class Home extends JFrame implements ActionListener{
 
     //TABS DE HOJAS/////////////////////////////////////////////////////////////////////
     JTabbedPane pestanas_hojas=new JTabbedPane();
-    
+    JPanel panel1=new JPanel();
+    JLabel et_p1=new JLabel("Estas en el panel 1");
 
     public Home(){
 
-        //BARRA DE MENU
+        //BARRA DE MENU/////////////////////////////////////////////
         barraMenu.add(electronica_menu);
         barraMenu.add(archivo_menu);
         archivo_menu.add(imprimir_csv);
@@ -48,10 +51,24 @@ public class Home extends JFrame implements ActionListener{
         barraMenu.add(reporte_menu);
         reporte_menu.add(crear_pdf);
         barraMenu.setBounds(0,0,1080,40);
+        /////////////////////////////////////////////////////////
 
+        //TABS//////////////////////////////////////////////////////
+        pestanas_hojas.setBounds(0,40,100,50);
+        panel1.add(et_p1);
+        pestanas_hojas.addTab("Panel 1", panel1);
+
+        ////////////////////////////////////////////////////////////
+
+        //BARRA DE HERRAMIENTAS
+        barraHerramientas.setBounds(0,0,100,1080);
+        barraHerramientas.add(new JTextArea());
+        barraHerramientas.add(new JButton("Submit"));
 
         //LOS COMPONENTES SE AGREGAN
         add(barraMenu, BorderLayout.PAGE_START);
+        add(pestanas_hojas, BorderLayout.CENTER);
+        add(barraHerramientas, BorderLayout.WEST);
 
         //PROPIEDADES DEL FRAME
         setSize(250, 100);
@@ -59,6 +76,7 @@ public class Home extends JFrame implements ActionListener{
         setTitle("HOME");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        pack();
     }
 
     public void actionPerformed(ActionEvent event)
