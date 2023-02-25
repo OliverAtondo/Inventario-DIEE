@@ -6,8 +6,7 @@
             "lib/**/*.jar"
         ],
         "exclude": [
-            "lib/sqlite-jdbc-3.7.2.jar",
-            "lib/sqlite-jdbc-3.40.1.0.jar"
+            "lib/sqlite-jdbc-3.7.2.jar"
         ]
     },
     "cSpell.words": [

@@ -47,7 +47,6 @@ public class Home extends JFrame implements ActionListener{
 
     public Home(){
 
-        con.createNewDatabase("prueba.db");
         //BARRA DE MENU/////////////////////////////////////////////
         barraMenu.add(electronica_menu);
         barraMenu.add(archivo_menu);
